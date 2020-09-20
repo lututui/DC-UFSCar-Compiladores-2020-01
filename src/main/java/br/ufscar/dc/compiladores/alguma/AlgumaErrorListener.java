@@ -1,4 +1,4 @@
-package br.ufscar.dc.compiladores.alguma.lexico;
+package br.ufscar.dc.compiladores.alguma;
 
 import java.io.FileWriter;
 import java.io.IOException;

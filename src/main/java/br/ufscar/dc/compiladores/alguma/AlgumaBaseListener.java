@@ -1,5 +1,5 @@
-// Generated from C:/Users/74434/Documents/GitHub/analisador-lexico-la-antlr/src/main/java/br/ufscar/dc/compiladores/alguma/lexico\Alguma.g4 by ANTLR 4.8
-package br.ufscar.dc.compiladores.alguma.lexico;
+// Generated from C:/Users/74434/Documents/GitHub/analisador-lexico-la-antlr/src/main/java/br/ufscar/dc/compiladores/alguma\Alguma.g4 by ANTLR 4.8
+package br.ufscar.dc.compiladores.alguma;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;

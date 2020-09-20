@@ -1,4 +1,4 @@
-package br.ufscar.dc.compiladores.alguma.lexico;
+package br.ufscar.dc.compiladores.alguma;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -8,7 +8,6 @@ import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Token;
-import org.antlr.v4.runtime.misc.Interval;
 
 public class Main {
     public static void main(String[] args) {
@@ -54,9 +53,5 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private static void errorWriter(FileWriter fileWriter, int linha, String msg) throws IOException {
-        fileWriter.write("Linha " + linha + ": " + msg + "\n");
     }
 }
