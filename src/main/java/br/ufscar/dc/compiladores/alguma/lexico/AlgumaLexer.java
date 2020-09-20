@@ -1,4 +1,4 @@
-// Generated from C:/Users/74434/Documents/GitHub/analisador-lexico-la-antlr/src/main/java/br/ufscar/dc/compiladores/alguma/lexico\AlgumaLexer.g4 by ANTLR 4.8
+// Generated from C:/Users/74434/Documents/GitHub/analisador-lexico-la-antlr/src/main/java/br/ufscar/dc/compiladores/alguma/lexico\Alguma.g4 by ANTLR 4.8
 package br.ufscar.dc.compiladores.alguma.lexico;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
@@ -135,7 +135,7 @@ public class AlgumaLexer extends Lexer {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "AlgumaLexer.g4"; }
+	public String getGrammarFileName() { return "Alguma.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }

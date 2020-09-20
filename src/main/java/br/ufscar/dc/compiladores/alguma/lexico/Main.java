@@ -6,40 +6,49 @@ import java.io.IOException;
 
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.misc.Interval;
 
 public class Main {
     public static void main(String[] args) {
         try {
             final CharStream charStream = CharStreams.fromFileName(args[0]);
             final FileWriter outputWriter = new FileWriter(new File(args[1]));
-            final AlgumaLexer lexer = new AlgumaLexer(charStream);
+            final AlgumaLexer lexer = new AlgumaLexer(charStream) {
+                @Override
+                public Token nextToken() {
+                    final Token t = super.nextToken();
+
+                    try {
+                        if (t.getType() == AlgumaLexer.COMENTARIO_NAO_FECHADO) {
+                            outputWriter.write("Linha " + _tokenStartLine + ": comentario nao fechado\n");
+                            AlgumaErrorListener.INSTANCE.hasError = true;
+                        } else if (t.getType() == AlgumaLexer.CADEIA_NAO_FECHADA) {
+                            outputWriter.write("Linha " + _tokenStartLine + ": cadeia literal nao fechada\n");
+                            AlgumaErrorListener.INSTANCE.hasError = true;
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    return t;
+                }
+            };
 
             lexer.removeErrorListeners();
-            lexer.addErrorListener(AlgumaLexerErrorListener.INSTANCE);
+            lexer.addErrorListener(AlgumaErrorListener.INSTANCE);
 
-            while (true) {
-                final Token t = lexer.nextToken();
+            final AlgumaParser parser = new AlgumaParser(new CommonTokenStream(lexer));
 
-                if (t.getType() == Token.EOF) {
-                    break;
-                } else if (t.getType() == AlgumaLexer.COMENTARIO_NAO_FECHADO) {
-                    errorWriter(outputWriter, t.getLine(), "comentario nao fechado");
-                    break;
-                } else if (t.getType() == AlgumaLexer.CADEIA_NAO_FECHADA) {
-                    errorWriter(outputWriter, t.getLine(), "cadeia literal nao fechada");
-                    break;
-                } else if (AlgumaLexerErrorListener.INSTANCE.hasError) {
-                    errorWriter(
-                            outputWriter,
-                            AlgumaLexerErrorListener.INSTANCE.errorLine,
-                            AlgumaLexerErrorListener.INSTANCE.errorToken + " - simbolo nao identificado"
-                    );
-                    break;
-                }
+            AlgumaErrorListener.INSTANCE.fileWriter = outputWriter;
 
-                outputWriter.write("<'" + t.getText() + "'," + AlgumaLexer.VOCABULARY.getDisplayName(t.getType()) + ">\n");
-            }
+            parser.removeErrorListeners();
+            parser.addErrorListener(AlgumaErrorListener.INSTANCE);
+
+            parser.programa();
+
+            outputWriter.write("Fim da compilacao\n");
 
             outputWriter.close();
         } catch (IOException e) {
