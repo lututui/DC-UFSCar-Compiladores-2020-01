@@ -24,6 +24,13 @@ public class AlgumaBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitDeclaracao(AlgumaParser.DeclaracaoContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitCorpo(AlgumaParser.CorpoContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -31,14 +38,7 @@ public class AlgumaBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitDeclaracoes(AlgumaParser.DeclaracoesContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitDeclaracao_global(AlgumaParser.Declaracao_globalContext ctx) { return visitChildren(ctx); }
+	@Override public T visitDeclaracaoGlobal(AlgumaParser.DeclaracaoGlobalContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -108,21 +108,14 @@ public class AlgumaBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitItem_selecao(AlgumaParser.Item_selecaoContext ctx) { return visitChildren(ctx); }
+	@Override public T visitIntervaloNumerico(AlgumaParser.IntervaloNumericoContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitConstantes(AlgumaParser.ConstantesContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitNumero_intervalo(AlgumaParser.Numero_intervaloContext ctx) { return visitChildren(ctx); }
+	@Override public T visitInteiro(AlgumaParser.InteiroContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -150,7 +143,7 @@ public class AlgumaBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitParametros(AlgumaParser.ParametrosContext ctx) { return visitChildren(ctx); }
+	@Override public T visitCmdSenao(AlgumaParser.CmdSenaoContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -164,14 +157,14 @@ public class AlgumaBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitDeclaracao_local(AlgumaParser.Declaracao_localContext ctx) { return visitChildren(ctx); }
+	@Override public T visitDeclaracaoLocal(AlgumaParser.DeclaracaoLocalContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitValor_constante(AlgumaParser.Valor_constanteContext ctx) { return visitChildren(ctx); }
+	@Override public T visitValorConstante(AlgumaParser.ValorConstanteContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -192,14 +185,14 @@ public class AlgumaBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitTipo_estendido(AlgumaParser.Tipo_estendidoContext ctx) { return visitChildren(ctx); }
+	@Override public T visitTipoEstendido(AlgumaParser.TipoEstendidoContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitTipo_basico(AlgumaParser.Tipo_basicoContext ctx) { return visitChildren(ctx); }
+	@Override public T visitTipoBasico(AlgumaParser.TipoBasicoContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -227,124 +220,103 @@ public class AlgumaBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExpressao_aritmetica(AlgumaParser.Expressao_aritmeticaContext ctx) { return visitChildren(ctx); }
+	@Override public T visitExpressaoAritmetica(AlgumaParser.ExpressaoAritmeticaContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitOp1(AlgumaParser.Op1Context ctx) { return visitChildren(ctx); }
+	@Override public T visitOperadorAritmetico1(AlgumaParser.OperadorAritmetico1Context ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitTermo(AlgumaParser.TermoContext ctx) { return visitChildren(ctx); }
+	@Override public T visitTermoAritmetico(AlgumaParser.TermoAritmeticoContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitOp2(AlgumaParser.Op2Context ctx) { return visitChildren(ctx); }
+	@Override public T visitOperadorAritmetico2(AlgumaParser.OperadorAritmetico2Context ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitFator(AlgumaParser.FatorContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFatorAritmetico(AlgumaParser.FatorAritmeticoContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitOp3(AlgumaParser.Op3Context ctx) { return visitChildren(ctx); }
+	@Override public T visitParcelaAritmetica(AlgumaParser.ParcelaAritmeticaContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitParcela(AlgumaParser.ParcelaContext ctx) { return visitChildren(ctx); }
+	@Override public T visitOperadorUnario(AlgumaParser.OperadorUnarioContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitParcela_nao_unario(AlgumaParser.Parcela_nao_unarioContext ctx) { return visitChildren(ctx); }
+	@Override public T visitParcelaNaoUnario(AlgumaParser.ParcelaNaoUnarioContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitOp_unario(AlgumaParser.Op_unarioContext ctx) { return visitChildren(ctx); }
+	@Override public T visitParcelaUnario(AlgumaParser.ParcelaUnarioContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitParcela_unario(AlgumaParser.Parcela_unarioContext ctx) { return visitChildren(ctx); }
+	@Override public T visitExpressaoLogica(AlgumaParser.ExpressaoLogicaContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExpressao(AlgumaParser.ExpressaoContext ctx) { return visitChildren(ctx); }
+	@Override public T visitTermoLogico(AlgumaParser.TermoLogicoContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitOp1_logico(AlgumaParser.Op1_logicoContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFatorLogico(AlgumaParser.FatorLogicoContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitTermo_logico(AlgumaParser.Termo_logicoContext ctx) { return visitChildren(ctx); }
+	@Override public T visitExpressaoRelacional(AlgumaParser.ExpressaoRelacionalContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitOp2_logico(AlgumaParser.Op2_logicoContext ctx) { return visitChildren(ctx); }
+	@Override public T visitOperadorRelacional(AlgumaParser.OperadorRelacionalContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitFator_logico(AlgumaParser.Fator_logicoContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitParcela_logica(AlgumaParser.Parcela_logicaContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitExpressao_relacional(AlgumaParser.Expressao_relacionalContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitOp_relacional(AlgumaParser.Op_relacionalContext ctx) { return visitChildren(ctx); }
+	@Override public T visitIdentificadorEndereco(AlgumaParser.IdentificadorEnderecoContext ctx) { return visitChildren(ctx); }
 }

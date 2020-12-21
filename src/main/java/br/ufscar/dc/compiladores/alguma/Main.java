@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import br.ufscar.dc.compiladores.alguma.semantico.ErroSemantico;
+import br.ufscar.dc.compiladores.alguma.semantico.Visitor;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -14,6 +16,9 @@ public class Main {
         try {
             final CharStream charStream = CharStreams.fromFileName(args[0]);
             final FileWriter outputWriter = new FileWriter(new File(args[1]));
+
+            AlgumaErrorListener.INSTANCE.fileWriter = outputWriter;
+
             final AlgumaLexer lexer = new AlgumaLexer(charStream) {
                 @Override
                 public Token nextToken() {
@@ -40,12 +45,16 @@ public class Main {
 
             final AlgumaParser parser = new AlgumaParser(new CommonTokenStream(lexer));
 
-            AlgumaErrorListener.INSTANCE.fileWriter = outputWriter;
-
             parser.removeErrorListeners();
             parser.addErrorListener(AlgumaErrorListener.INSTANCE);
 
-            parser.programa();
+            final Visitor v = new Visitor();
+
+            v.visit(parser.programa());
+
+            for (ErroSemantico it : v.getErros()) {
+                outputWriter.write(it.getMessage() + "\n");
+            }
 
             outputWriter.write("Fim da compilacao\n");
 

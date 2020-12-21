@@ -17,23 +17,23 @@ public interface AlgumaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPrograma(AlgumaParser.ProgramaContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link AlgumaParser#declaracao}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDeclaracao(AlgumaParser.DeclaracaoContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link AlgumaParser#corpo}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitCorpo(AlgumaParser.CorpoContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#declaracoes}.
+	 * Visit a parse tree produced by {@link AlgumaParser#declaracaoGlobal}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDeclaracoes(AlgumaParser.DeclaracoesContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#declaracao_global}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDeclaracao_global(AlgumaParser.Declaracao_globalContext ctx);
+	T visitDeclaracaoGlobal(AlgumaParser.DeclaracaoGlobalContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link AlgumaParser#cmd}.
 	 * @param ctx the parse tree
@@ -89,23 +89,17 @@ public interface AlgumaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSelecao(AlgumaParser.SelecaoContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#item_selecao}.
+	 * Visit a parse tree produced by {@link AlgumaParser#intervaloNumerico}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitItem_selecao(AlgumaParser.Item_selecaoContext ctx);
+	T visitIntervaloNumerico(AlgumaParser.IntervaloNumericoContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#constantes}.
+	 * Visit a parse tree produced by {@link AlgumaParser#inteiro}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitConstantes(AlgumaParser.ConstantesContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#numero_intervalo}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNumero_intervalo(AlgumaParser.Numero_intervaloContext ctx);
+	T visitInteiro(AlgumaParser.InteiroContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link AlgumaParser#cmdSe}.
 	 * @param ctx the parse tree
@@ -125,11 +119,11 @@ public interface AlgumaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitCmdLeia(AlgumaParser.CmdLeiaContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#parametros}.
+	 * Visit a parse tree produced by {@link AlgumaParser#cmdSenao}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitParametros(AlgumaParser.ParametrosContext ctx);
+	T visitCmdSenao(AlgumaParser.CmdSenaoContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link AlgumaParser#parametro}.
 	 * @param ctx the parse tree
@@ -137,17 +131,17 @@ public interface AlgumaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitParametro(AlgumaParser.ParametroContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#declaracao_local}.
+	 * Visit a parse tree produced by {@link AlgumaParser#declaracaoLocal}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDeclaracao_local(AlgumaParser.Declaracao_localContext ctx);
+	T visitDeclaracaoLocal(AlgumaParser.DeclaracaoLocalContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#valor_constante}.
+	 * Visit a parse tree produced by {@link AlgumaParser#valorConstante}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitValor_constante(AlgumaParser.Valor_constanteContext ctx);
+	T visitValorConstante(AlgumaParser.ValorConstanteContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link AlgumaParser#variavel}.
 	 * @param ctx the parse tree
@@ -161,17 +155,17 @@ public interface AlgumaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitTipo(AlgumaParser.TipoContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#tipo_estendido}.
+	 * Visit a parse tree produced by {@link AlgumaParser#tipoEstendido}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitTipo_estendido(AlgumaParser.Tipo_estendidoContext ctx);
+	T visitTipoEstendido(AlgumaParser.TipoEstendidoContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#tipo_basico}.
+	 * Visit a parse tree produced by {@link AlgumaParser#tipoBasico}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitTipo_basico(AlgumaParser.Tipo_basicoContext ctx);
+	T visitTipoBasico(AlgumaParser.TipoBasicoContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link AlgumaParser#registro}.
 	 * @param ctx the parse tree
@@ -191,111 +185,93 @@ public interface AlgumaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDimensao(AlgumaParser.DimensaoContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#expressao_aritmetica}.
+	 * Visit a parse tree produced by {@link AlgumaParser#expressaoAritmetica}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpressao_aritmetica(AlgumaParser.Expressao_aritmeticaContext ctx);
+	T visitExpressaoAritmetica(AlgumaParser.ExpressaoAritmeticaContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#op1}.
+	 * Visit a parse tree produced by {@link AlgumaParser#operadorAritmetico1}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOp1(AlgumaParser.Op1Context ctx);
+	T visitOperadorAritmetico1(AlgumaParser.OperadorAritmetico1Context ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#termo}.
+	 * Visit a parse tree produced by {@link AlgumaParser#termoAritmetico}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitTermo(AlgumaParser.TermoContext ctx);
+	T visitTermoAritmetico(AlgumaParser.TermoAritmeticoContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#op2}.
+	 * Visit a parse tree produced by {@link AlgumaParser#operadorAritmetico2}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOp2(AlgumaParser.Op2Context ctx);
+	T visitOperadorAritmetico2(AlgumaParser.OperadorAritmetico2Context ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#fator}.
+	 * Visit a parse tree produced by {@link AlgumaParser#fatorAritmetico}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFator(AlgumaParser.FatorContext ctx);
+	T visitFatorAritmetico(AlgumaParser.FatorAritmeticoContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#op3}.
+	 * Visit a parse tree produced by {@link AlgumaParser#parcelaAritmetica}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOp3(AlgumaParser.Op3Context ctx);
+	T visitParcelaAritmetica(AlgumaParser.ParcelaAritmeticaContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#parcela}.
+	 * Visit a parse tree produced by {@link AlgumaParser#operadorUnario}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitParcela(AlgumaParser.ParcelaContext ctx);
+	T visitOperadorUnario(AlgumaParser.OperadorUnarioContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#parcela_nao_unario}.
+	 * Visit a parse tree produced by {@link AlgumaParser#parcelaNaoUnario}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitParcela_nao_unario(AlgumaParser.Parcela_nao_unarioContext ctx);
+	T visitParcelaNaoUnario(AlgumaParser.ParcelaNaoUnarioContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#op_unario}.
+	 * Visit a parse tree produced by {@link AlgumaParser#parcelaUnario}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOp_unario(AlgumaParser.Op_unarioContext ctx);
+	T visitParcelaUnario(AlgumaParser.ParcelaUnarioContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#parcela_unario}.
+	 * Visit a parse tree produced by {@link AlgumaParser#expressaoLogica}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitParcela_unario(AlgumaParser.Parcela_unarioContext ctx);
+	T visitExpressaoLogica(AlgumaParser.ExpressaoLogicaContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#expressao}.
+	 * Visit a parse tree produced by {@link AlgumaParser#termoLogico}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpressao(AlgumaParser.ExpressaoContext ctx);
+	T visitTermoLogico(AlgumaParser.TermoLogicoContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#op1_logico}.
+	 * Visit a parse tree produced by {@link AlgumaParser#fatorLogico}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOp1_logico(AlgumaParser.Op1_logicoContext ctx);
+	T visitFatorLogico(AlgumaParser.FatorLogicoContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#termo_logico}.
+	 * Visit a parse tree produced by {@link AlgumaParser#expressaoRelacional}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitTermo_logico(AlgumaParser.Termo_logicoContext ctx);
+	T visitExpressaoRelacional(AlgumaParser.ExpressaoRelacionalContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#op2_logico}.
+	 * Visit a parse tree produced by {@link AlgumaParser#operadorRelacional}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOp2_logico(AlgumaParser.Op2_logicoContext ctx);
+	T visitOperadorRelacional(AlgumaParser.OperadorRelacionalContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#fator_logico}.
+	 * Visit a parse tree produced by {@link AlgumaParser#identificadorEndereco}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFator_logico(AlgumaParser.Fator_logicoContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#parcela_logica}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitParcela_logica(AlgumaParser.Parcela_logicaContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#expressao_relacional}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitExpressao_relacional(AlgumaParser.Expressao_relacionalContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link AlgumaParser#op_relacional}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitOp_relacional(AlgumaParser.Op_relacionalContext ctx);
+	T visitIdentificadorEndereco(AlgumaParser.IdentificadorEnderecoContext ctx);
 }

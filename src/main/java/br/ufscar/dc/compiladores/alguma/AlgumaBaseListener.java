@@ -28,6 +28,18 @@ public class AlgumaBaseListener implements AlgumaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterDeclaracao(AlgumaParser.DeclaracaoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDeclaracao(AlgumaParser.DeclaracaoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterCorpo(AlgumaParser.CorpoContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -40,25 +52,13 @@ public class AlgumaBaseListener implements AlgumaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDeclaracoes(AlgumaParser.DeclaracoesContext ctx) { }
+	@Override public void enterDeclaracaoGlobal(AlgumaParser.DeclaracaoGlobalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDeclaracoes(AlgumaParser.DeclaracoesContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterDeclaracao_global(AlgumaParser.Declaracao_globalContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitDeclaracao_global(AlgumaParser.Declaracao_globalContext ctx) { }
+	@Override public void exitDeclaracaoGlobal(AlgumaParser.DeclaracaoGlobalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -172,37 +172,25 @@ public class AlgumaBaseListener implements AlgumaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterItem_selecao(AlgumaParser.Item_selecaoContext ctx) { }
+	@Override public void enterIntervaloNumerico(AlgumaParser.IntervaloNumericoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitItem_selecao(AlgumaParser.Item_selecaoContext ctx) { }
+	@Override public void exitIntervaloNumerico(AlgumaParser.IntervaloNumericoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterConstantes(AlgumaParser.ConstantesContext ctx) { }
+	@Override public void enterInteiro(AlgumaParser.InteiroContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitConstantes(AlgumaParser.ConstantesContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterNumero_intervalo(AlgumaParser.Numero_intervaloContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitNumero_intervalo(AlgumaParser.Numero_intervaloContext ctx) { }
+	@Override public void exitInteiro(AlgumaParser.InteiroContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -244,13 +232,13 @@ public class AlgumaBaseListener implements AlgumaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterParametros(AlgumaParser.ParametrosContext ctx) { }
+	@Override public void enterCmdSenao(AlgumaParser.CmdSenaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParametros(AlgumaParser.ParametrosContext ctx) { }
+	@Override public void exitCmdSenao(AlgumaParser.CmdSenaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -268,25 +256,25 @@ public class AlgumaBaseListener implements AlgumaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDeclaracao_local(AlgumaParser.Declaracao_localContext ctx) { }
+	@Override public void enterDeclaracaoLocal(AlgumaParser.DeclaracaoLocalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDeclaracao_local(AlgumaParser.Declaracao_localContext ctx) { }
+	@Override public void exitDeclaracaoLocal(AlgumaParser.DeclaracaoLocalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterValor_constante(AlgumaParser.Valor_constanteContext ctx) { }
+	@Override public void enterValorConstante(AlgumaParser.ValorConstanteContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitValor_constante(AlgumaParser.Valor_constanteContext ctx) { }
+	@Override public void exitValorConstante(AlgumaParser.ValorConstanteContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -316,25 +304,25 @@ public class AlgumaBaseListener implements AlgumaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTipo_estendido(AlgumaParser.Tipo_estendidoContext ctx) { }
+	@Override public void enterTipoEstendido(AlgumaParser.TipoEstendidoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTipo_estendido(AlgumaParser.Tipo_estendidoContext ctx) { }
+	@Override public void exitTipoEstendido(AlgumaParser.TipoEstendidoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTipo_basico(AlgumaParser.Tipo_basicoContext ctx) { }
+	@Override public void enterTipoBasico(AlgumaParser.TipoBasicoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTipo_basico(AlgumaParser.Tipo_basicoContext ctx) { }
+	@Override public void exitTipoBasico(AlgumaParser.TipoBasicoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -376,217 +364,181 @@ public class AlgumaBaseListener implements AlgumaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpressao_aritmetica(AlgumaParser.Expressao_aritmeticaContext ctx) { }
+	@Override public void enterExpressaoAritmetica(AlgumaParser.ExpressaoAritmeticaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpressao_aritmetica(AlgumaParser.Expressao_aritmeticaContext ctx) { }
+	@Override public void exitExpressaoAritmetica(AlgumaParser.ExpressaoAritmeticaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOp1(AlgumaParser.Op1Context ctx) { }
+	@Override public void enterOperadorAritmetico1(AlgumaParser.OperadorAritmetico1Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOp1(AlgumaParser.Op1Context ctx) { }
+	@Override public void exitOperadorAritmetico1(AlgumaParser.OperadorAritmetico1Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTermo(AlgumaParser.TermoContext ctx) { }
+	@Override public void enterTermoAritmetico(AlgumaParser.TermoAritmeticoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTermo(AlgumaParser.TermoContext ctx) { }
+	@Override public void exitTermoAritmetico(AlgumaParser.TermoAritmeticoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOp2(AlgumaParser.Op2Context ctx) { }
+	@Override public void enterOperadorAritmetico2(AlgumaParser.OperadorAritmetico2Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOp2(AlgumaParser.Op2Context ctx) { }
+	@Override public void exitOperadorAritmetico2(AlgumaParser.OperadorAritmetico2Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFator(AlgumaParser.FatorContext ctx) { }
+	@Override public void enterFatorAritmetico(AlgumaParser.FatorAritmeticoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFator(AlgumaParser.FatorContext ctx) { }
+	@Override public void exitFatorAritmetico(AlgumaParser.FatorAritmeticoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOp3(AlgumaParser.Op3Context ctx) { }
+	@Override public void enterParcelaAritmetica(AlgumaParser.ParcelaAritmeticaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOp3(AlgumaParser.Op3Context ctx) { }
+	@Override public void exitParcelaAritmetica(AlgumaParser.ParcelaAritmeticaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterParcela(AlgumaParser.ParcelaContext ctx) { }
+	@Override public void enterOperadorUnario(AlgumaParser.OperadorUnarioContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParcela(AlgumaParser.ParcelaContext ctx) { }
+	@Override public void exitOperadorUnario(AlgumaParser.OperadorUnarioContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterParcela_nao_unario(AlgumaParser.Parcela_nao_unarioContext ctx) { }
+	@Override public void enterParcelaNaoUnario(AlgumaParser.ParcelaNaoUnarioContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParcela_nao_unario(AlgumaParser.Parcela_nao_unarioContext ctx) { }
+	@Override public void exitParcelaNaoUnario(AlgumaParser.ParcelaNaoUnarioContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOp_unario(AlgumaParser.Op_unarioContext ctx) { }
+	@Override public void enterParcelaUnario(AlgumaParser.ParcelaUnarioContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOp_unario(AlgumaParser.Op_unarioContext ctx) { }
+	@Override public void exitParcelaUnario(AlgumaParser.ParcelaUnarioContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterParcela_unario(AlgumaParser.Parcela_unarioContext ctx) { }
+	@Override public void enterExpressaoLogica(AlgumaParser.ExpressaoLogicaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParcela_unario(AlgumaParser.Parcela_unarioContext ctx) { }
+	@Override public void exitExpressaoLogica(AlgumaParser.ExpressaoLogicaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpressao(AlgumaParser.ExpressaoContext ctx) { }
+	@Override public void enterTermoLogico(AlgumaParser.TermoLogicoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpressao(AlgumaParser.ExpressaoContext ctx) { }
+	@Override public void exitTermoLogico(AlgumaParser.TermoLogicoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOp1_logico(AlgumaParser.Op1_logicoContext ctx) { }
+	@Override public void enterFatorLogico(AlgumaParser.FatorLogicoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOp1_logico(AlgumaParser.Op1_logicoContext ctx) { }
+	@Override public void exitFatorLogico(AlgumaParser.FatorLogicoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTermo_logico(AlgumaParser.Termo_logicoContext ctx) { }
+	@Override public void enterExpressaoRelacional(AlgumaParser.ExpressaoRelacionalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTermo_logico(AlgumaParser.Termo_logicoContext ctx) { }
+	@Override public void exitExpressaoRelacional(AlgumaParser.ExpressaoRelacionalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOp2_logico(AlgumaParser.Op2_logicoContext ctx) { }
+	@Override public void enterOperadorRelacional(AlgumaParser.OperadorRelacionalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOp2_logico(AlgumaParser.Op2_logicoContext ctx) { }
+	@Override public void exitOperadorRelacional(AlgumaParser.OperadorRelacionalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFator_logico(AlgumaParser.Fator_logicoContext ctx) { }
+	@Override public void enterIdentificadorEndereco(AlgumaParser.IdentificadorEnderecoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFator_logico(AlgumaParser.Fator_logicoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterParcela_logica(AlgumaParser.Parcela_logicaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitParcela_logica(AlgumaParser.Parcela_logicaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterExpressao_relacional(AlgumaParser.Expressao_relacionalContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitExpressao_relacional(AlgumaParser.Expressao_relacionalContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterOp_relacional(AlgumaParser.Op_relacionalContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitOp_relacional(AlgumaParser.Op_relacionalContext ctx) { }
+	@Override public void exitIdentificadorEndereco(AlgumaParser.IdentificadorEnderecoContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

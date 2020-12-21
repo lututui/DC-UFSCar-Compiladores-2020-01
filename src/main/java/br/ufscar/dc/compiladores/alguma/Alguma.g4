@@ -1,65 +1,52 @@
 grammar Alguma;
 
-programa: declaracoes PR_ALGORITMO corpo PR_FIM_ALGORITMO;
-corpo: declaracao_local* cmd*;
-declaracoes: (declaracao_local | declaracao_global)*;
-declaracao_global: (PR_PROCEDIMENTO IDENT DELIMITADOR_ABRE_PARENTESES parametros? DELIMITADOR_FECHA_PARENTESES declaracao_local* cmd* PR_FIM_PROCEDIMENTO) |
-    PR_FUNCAO IDENT DELIMITADOR_ABRE_PARENTESES parametros? DELIMITADOR_FECHA_PARENTESES DELIMITADOR_DOIS_PONTOS tipo_estendido declaracao_local* cmd* PR_FIM_FUNCAO;
+programa: declaracao* PR_ALGORITMO corpo PR_FIM_ALGORITMO;
+declaracao: declaracaoLocal | declaracaoGlobal;
+corpo: declaracaoLocal* cmd*;
+declaracaoGlobal: PR_PROCEDIMENTO IDENT DELIMITADOR_ABRE_PARENTESES (parametro (DELIMITADOR_VIRGULA parametro)*)? DELIMITADOR_FECHA_PARENTESES declaracaoLocal* cmd* PR_FIM_PROCEDIMENTO |
+                  PR_FUNCAO       IDENT DELIMITADOR_ABRE_PARENTESES (parametro (DELIMITADOR_VIRGULA parametro)*)? DELIMITADOR_FECHA_PARENTESES DELIMITADOR_DOIS_PONTOS tipoEstendido declaracaoLocal* cmd* PR_FIM_FUNCAO;
 cmd: cmdLeia | cmdEscreva | cmdSe | cmdCaso | cmdPara | cmdEnquanto | cmdFaca | cmdAtribuicao | cmdChamada | cmdRetorne;
-cmdRetorne: PR_RETORNE expressao;
-cmdChamada: IDENT DELIMITADOR_ABRE_PARENTESES expressao (DELIMITADOR_VIRGULA expressao)* DELIMITADOR_FECHA_PARENTESES;
-cmdAtribuicao: TIPO_ENDERECO? identificador OPERADOR_ATRIBUICAO expressao;
-cmdFaca: PR_FACA cmd* PR_ATE expressao;
-cmdEnquanto: PR_ENQUANTO expressao PR_FACA cmd* PR_FIM_ENQUANTO;
-cmdPara: PR_PARA IDENT OPERADOR_ATRIBUICAO expressao_aritmetica PR_ATE expressao_aritmetica PR_FACA cmd* PR_FIM_PARA;
-cmdCaso: PR_CASO expressao_aritmetica PR_SEJA selecao (PR_SENAO cmd*)? PR_FIM_CASO;
-selecao: item_selecao*;
-item_selecao: constantes DELIMITADOR_DOIS_PONTOS cmd*;
-constantes: numero_intervalo (DELIMITADOR_VIRGULA numero_intervalo)*;
-numero_intervalo: op_unario? NUM_INT (OPERADOR_RANGE op_unario? NUM_INT)?;
-cmdSe: PR_SE expressao PR_ENTAO cmd* (PR_SENAO cmd*)? PR_FIM_SE;
-cmdEscreva: PR_ESCREVA DELIMITADOR_ABRE_PARENTESES expressao (DELIMITADOR_VIRGULA expressao)* DELIMITADOR_FECHA_PARENTESES;
-cmdLeia: PR_LEIA DELIMITADOR_ABRE_PARENTESES TIPO_ENDERECO? identificador (',' TIPO_ENDERECO? identificador)* DELIMITADOR_FECHA_PARENTESES;
-parametros: parametro (DELIMITADOR_VIRGULA parametro)*;
-parametro: PR_VAR? identificador (DELIMITADOR_VIRGULA identificador)* DELIMITADOR_DOIS_PONTOS tipo_estendido;
-declaracao_local: (PR_DECLARE variavel) |
-    (PR_CONSTANTE IDENT DELIMITADOR_DOIS_PONTOS tipo_basico OPERADOR_IGUAL valor_constante) |
+cmdRetorne: PR_RETORNE expressaoLogica;
+cmdChamada: IDENT DELIMITADOR_ABRE_PARENTESES expressaoLogica (DELIMITADOR_VIRGULA expressaoLogica)* DELIMITADOR_FECHA_PARENTESES;
+cmdAtribuicao: identificadorEndereco OPERADOR_ATRIBUICAO expressaoLogica;
+cmdFaca: PR_FACA cmd* PR_ATE expressaoLogica;
+cmdEnquanto: PR_ENQUANTO expressaoLogica PR_FACA cmd* PR_FIM_ENQUANTO;
+cmdPara: PR_PARA IDENT OPERADOR_ATRIBUICAO expressaoAritmetica PR_ATE expressaoAritmetica PR_FACA cmd* PR_FIM_PARA;
+cmdCaso: PR_CASO expressaoAritmetica PR_SEJA selecao* cmdSenao? PR_FIM_CASO;
+selecao: intervaloNumerico (DELIMITADOR_VIRGULA intervaloNumerico)* DELIMITADOR_DOIS_PONTOS cmd*;
+intervaloNumerico: inteiro (OPERADOR_RANGE inteiro)?;
+inteiro: operadorUnario? NUM_INT;
+cmdSe: PR_SE expressaoLogica PR_ENTAO cmd* cmdSenao? PR_FIM_SE;
+cmdEscreva: PR_ESCREVA DELIMITADOR_ABRE_PARENTESES expressaoLogica (DELIMITADOR_VIRGULA expressaoLogica)* DELIMITADOR_FECHA_PARENTESES;
+cmdLeia: PR_LEIA DELIMITADOR_ABRE_PARENTESES identificadorEndereco (',' identificadorEndereco)* DELIMITADOR_FECHA_PARENTESES;
+cmdSenao: PR_SENAO cmd*;
+parametro: PR_VAR? identificador (DELIMITADOR_VIRGULA identificador)* DELIMITADOR_DOIS_PONTOS tipoEstendido;
+declaracaoLocal: (PR_DECLARE variavel) |
+    (PR_CONSTANTE IDENT DELIMITADOR_DOIS_PONTOS tipoBasico OPERADOR_IGUAL valorConstante) |
     (PR_TIPO IDENT DELIMITADOR_DOIS_PONTOS tipo);
-valor_constante: CADEIA | NUM_INT | NUM_REAL | PR_VERDADEIRO | PR_FALSO;
+valorConstante: CADEIA | inteiro | (operadorUnario? NUM_REAL) | PR_VERDADEIRO | PR_FALSO;
 variavel: identificador (DELIMITADOR_VIRGULA identificador)* DELIMITADOR_DOIS_PONTOS tipo;
-tipo: registro | tipo_estendido;
-tipo_estendido: TIPO_ENDERECO? (tipo_basico | IDENT);
-tipo_basico: PR_TIPO_LITERAL | PR_TIPO_INTEIRO | PR_TIPO_REAL | PR_TIPO_LOGICO;
+tipo: registro | tipoEstendido;
+tipoEstendido: TIPO_ENDERECO? (tipoBasico | IDENT);
+tipoBasico: PR_TIPO_LITERAL | PR_TIPO_INTEIRO | PR_TIPO_REAL | PR_TIPO_LOGICO;
 registro: PR_REGISTRO variavel* PR_FIM_REGISTRO;
-identificador: IDENT (OPERADOR_REGISTRO IDENT)* dimensao*;
-dimensao: DELIMITADOR_ABRE_COLCHETES expressao_aritmetica DELIMITADOR_FECHA_COLCHETES;
-expressao_aritmetica: termo (op1 termo)*;
-op1: OPERADOR_SOMA | OPERADOR_SUBTRACAO;
-termo: fator (op2 fator)*;
-op2: OPERADOR_MULTIPLICACAO | OPERADOR_DIVISAO;
-fator: parcela (op3 parcela)*;
-op3: OPERADOR_MOD;
-parcela: (op_unario? parcela_unario) | parcela_nao_unario;
-parcela_nao_unario: (OPERADOR_ENDERECO identificador) | CADEIA;
-op_unario: OPERADOR_SUBTRACAO;
-parcela_unario: (TIPO_ENDERECO? identificador) |
-     (IDENT DELIMITADOR_ABRE_PARENTESES expressao (DELIMITADOR_VIRGULA expressao)* DELIMITADOR_FECHA_PARENTESES) |
-     NUM_INT |
-     NUM_REAL |
-     (DELIMITADOR_ABRE_PARENTESES expressao DELIMITADOR_FECHA_PARENTESES);
-expressao: termo_logico (op1_logico termo_logico)*;
-op1_logico: PR_OU;
-termo_logico: fator_logico (op2_logico fator_logico)*;
-op2_logico: PR_E;
-fator_logico: PR_NAO? parcela_logica;
-parcela_logica: PR_VERDADEIRO | PR_FALSO | expressao_relacional;
-expressao_relacional: expressao_aritmetica (op_relacional expressao_aritmetica)?;
-op_relacional: OPERADOR_IGUAL |
-    OPERADOR_DIFERENTE |
-    OPERADOR_MAIOR_IGUAL |
-    OPERADOR_MENOR_IGUAL |
-    OPERADOR_MAIOR |
-    OPERADOR_MENOR;
+identificador: IDENT (OPERADOR_REGISTRO identificador)? dimensao*;
+dimensao: DELIMITADOR_ABRE_COLCHETES expressaoAritmetica DELIMITADOR_FECHA_COLCHETES;
+expressaoAritmetica: termoAritmetico (operadorAritmetico1 termoAritmetico)*;
+operadorAritmetico1: OPERADOR_SOMA | OPERADOR_SUBTRACAO;
+termoAritmetico: fatorAritmetico (operadorAritmetico2 fatorAritmetico)*;
+operadorAritmetico2: OPERADOR_MULTIPLICACAO | OPERADOR_DIVISAO;
+fatorAritmetico: parcelaAritmetica (OPERADOR_MOD parcelaAritmetica)*;
+parcelaAritmetica: parcelaUnario | parcelaNaoUnario;
+operadorUnario: OPERADOR_SUBTRACAO;
+parcelaNaoUnario: (OPERADOR_ENDERECO identificador) | CADEIA;
+parcelaUnario: operadorUnario? (identificadorEndereco | cmdChamada | NUM_INT | NUM_REAL | (DELIMITADOR_ABRE_PARENTESES expressaoLogica DELIMITADOR_FECHA_PARENTESES));
+expressaoLogica: termoLogico (PR_OU termoLogico)*;
+termoLogico: fatorLogico (PR_E fatorLogico)*;
+fatorLogico: PR_NAO? (PR_VERDADEIRO | PR_FALSO | expressaoRelacional);
+expressaoRelacional: expressaoAritmetica (operadorRelacional expressaoAritmetica)?;
+operadorRelacional: OPERADOR_IGUAL | OPERADOR_DIFERENTE | OPERADOR_MAIOR_IGUAL | OPERADOR_MENOR_IGUAL | OPERADOR_MAIOR | OPERADOR_MENOR;
+identificadorEndereco: TIPO_ENDERECO? identificador;
 
 PR_ALGORITMO: 'algoritmo';
 PR_DECLARE: 'declare';

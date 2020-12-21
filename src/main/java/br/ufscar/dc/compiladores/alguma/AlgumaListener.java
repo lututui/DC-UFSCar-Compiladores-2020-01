@@ -18,6 +18,16 @@ public interface AlgumaListener extends ParseTreeListener {
 	 */
 	void exitPrograma(AlgumaParser.ProgramaContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link AlgumaParser#declaracao}.
+	 * @param ctx the parse tree
+	 */
+	void enterDeclaracao(AlgumaParser.DeclaracaoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link AlgumaParser#declaracao}.
+	 * @param ctx the parse tree
+	 */
+	void exitDeclaracao(AlgumaParser.DeclaracaoContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link AlgumaParser#corpo}.
 	 * @param ctx the parse tree
 	 */
@@ -28,25 +38,15 @@ public interface AlgumaListener extends ParseTreeListener {
 	 */
 	void exitCorpo(AlgumaParser.CorpoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#declaracoes}.
+	 * Enter a parse tree produced by {@link AlgumaParser#declaracaoGlobal}.
 	 * @param ctx the parse tree
 	 */
-	void enterDeclaracoes(AlgumaParser.DeclaracoesContext ctx);
+	void enterDeclaracaoGlobal(AlgumaParser.DeclaracaoGlobalContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#declaracoes}.
+	 * Exit a parse tree produced by {@link AlgumaParser#declaracaoGlobal}.
 	 * @param ctx the parse tree
 	 */
-	void exitDeclaracoes(AlgumaParser.DeclaracoesContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#declaracao_global}.
-	 * @param ctx the parse tree
-	 */
-	void enterDeclaracao_global(AlgumaParser.Declaracao_globalContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#declaracao_global}.
-	 * @param ctx the parse tree
-	 */
-	void exitDeclaracao_global(AlgumaParser.Declaracao_globalContext ctx);
+	void exitDeclaracaoGlobal(AlgumaParser.DeclaracaoGlobalContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link AlgumaParser#cmd}.
 	 * @param ctx the parse tree
@@ -138,35 +138,25 @@ public interface AlgumaListener extends ParseTreeListener {
 	 */
 	void exitSelecao(AlgumaParser.SelecaoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#item_selecao}.
+	 * Enter a parse tree produced by {@link AlgumaParser#intervaloNumerico}.
 	 * @param ctx the parse tree
 	 */
-	void enterItem_selecao(AlgumaParser.Item_selecaoContext ctx);
+	void enterIntervaloNumerico(AlgumaParser.IntervaloNumericoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#item_selecao}.
+	 * Exit a parse tree produced by {@link AlgumaParser#intervaloNumerico}.
 	 * @param ctx the parse tree
 	 */
-	void exitItem_selecao(AlgumaParser.Item_selecaoContext ctx);
+	void exitIntervaloNumerico(AlgumaParser.IntervaloNumericoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#constantes}.
+	 * Enter a parse tree produced by {@link AlgumaParser#inteiro}.
 	 * @param ctx the parse tree
 	 */
-	void enterConstantes(AlgumaParser.ConstantesContext ctx);
+	void enterInteiro(AlgumaParser.InteiroContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#constantes}.
+	 * Exit a parse tree produced by {@link AlgumaParser#inteiro}.
 	 * @param ctx the parse tree
 	 */
-	void exitConstantes(AlgumaParser.ConstantesContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#numero_intervalo}.
-	 * @param ctx the parse tree
-	 */
-	void enterNumero_intervalo(AlgumaParser.Numero_intervaloContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#numero_intervalo}.
-	 * @param ctx the parse tree
-	 */
-	void exitNumero_intervalo(AlgumaParser.Numero_intervaloContext ctx);
+	void exitInteiro(AlgumaParser.InteiroContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link AlgumaParser#cmdSe}.
 	 * @param ctx the parse tree
@@ -198,15 +188,15 @@ public interface AlgumaListener extends ParseTreeListener {
 	 */
 	void exitCmdLeia(AlgumaParser.CmdLeiaContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#parametros}.
+	 * Enter a parse tree produced by {@link AlgumaParser#cmdSenao}.
 	 * @param ctx the parse tree
 	 */
-	void enterParametros(AlgumaParser.ParametrosContext ctx);
+	void enterCmdSenao(AlgumaParser.CmdSenaoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#parametros}.
+	 * Exit a parse tree produced by {@link AlgumaParser#cmdSenao}.
 	 * @param ctx the parse tree
 	 */
-	void exitParametros(AlgumaParser.ParametrosContext ctx);
+	void exitCmdSenao(AlgumaParser.CmdSenaoContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link AlgumaParser#parametro}.
 	 * @param ctx the parse tree
@@ -218,25 +208,25 @@ public interface AlgumaListener extends ParseTreeListener {
 	 */
 	void exitParametro(AlgumaParser.ParametroContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#declaracao_local}.
+	 * Enter a parse tree produced by {@link AlgumaParser#declaracaoLocal}.
 	 * @param ctx the parse tree
 	 */
-	void enterDeclaracao_local(AlgumaParser.Declaracao_localContext ctx);
+	void enterDeclaracaoLocal(AlgumaParser.DeclaracaoLocalContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#declaracao_local}.
+	 * Exit a parse tree produced by {@link AlgumaParser#declaracaoLocal}.
 	 * @param ctx the parse tree
 	 */
-	void exitDeclaracao_local(AlgumaParser.Declaracao_localContext ctx);
+	void exitDeclaracaoLocal(AlgumaParser.DeclaracaoLocalContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#valor_constante}.
+	 * Enter a parse tree produced by {@link AlgumaParser#valorConstante}.
 	 * @param ctx the parse tree
 	 */
-	void enterValor_constante(AlgumaParser.Valor_constanteContext ctx);
+	void enterValorConstante(AlgumaParser.ValorConstanteContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#valor_constante}.
+	 * Exit a parse tree produced by {@link AlgumaParser#valorConstante}.
 	 * @param ctx the parse tree
 	 */
-	void exitValor_constante(AlgumaParser.Valor_constanteContext ctx);
+	void exitValorConstante(AlgumaParser.ValorConstanteContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link AlgumaParser#variavel}.
 	 * @param ctx the parse tree
@@ -258,25 +248,25 @@ public interface AlgumaListener extends ParseTreeListener {
 	 */
 	void exitTipo(AlgumaParser.TipoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#tipo_estendido}.
+	 * Enter a parse tree produced by {@link AlgumaParser#tipoEstendido}.
 	 * @param ctx the parse tree
 	 */
-	void enterTipo_estendido(AlgumaParser.Tipo_estendidoContext ctx);
+	void enterTipoEstendido(AlgumaParser.TipoEstendidoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#tipo_estendido}.
+	 * Exit a parse tree produced by {@link AlgumaParser#tipoEstendido}.
 	 * @param ctx the parse tree
 	 */
-	void exitTipo_estendido(AlgumaParser.Tipo_estendidoContext ctx);
+	void exitTipoEstendido(AlgumaParser.TipoEstendidoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#tipo_basico}.
+	 * Enter a parse tree produced by {@link AlgumaParser#tipoBasico}.
 	 * @param ctx the parse tree
 	 */
-	void enterTipo_basico(AlgumaParser.Tipo_basicoContext ctx);
+	void enterTipoBasico(AlgumaParser.TipoBasicoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#tipo_basico}.
+	 * Exit a parse tree produced by {@link AlgumaParser#tipoBasico}.
 	 * @param ctx the parse tree
 	 */
-	void exitTipo_basico(AlgumaParser.Tipo_basicoContext ctx);
+	void exitTipoBasico(AlgumaParser.TipoBasicoContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link AlgumaParser#registro}.
 	 * @param ctx the parse tree
@@ -308,183 +298,153 @@ public interface AlgumaListener extends ParseTreeListener {
 	 */
 	void exitDimensao(AlgumaParser.DimensaoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#expressao_aritmetica}.
+	 * Enter a parse tree produced by {@link AlgumaParser#expressaoAritmetica}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpressao_aritmetica(AlgumaParser.Expressao_aritmeticaContext ctx);
+	void enterExpressaoAritmetica(AlgumaParser.ExpressaoAritmeticaContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#expressao_aritmetica}.
+	 * Exit a parse tree produced by {@link AlgumaParser#expressaoAritmetica}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpressao_aritmetica(AlgumaParser.Expressao_aritmeticaContext ctx);
+	void exitExpressaoAritmetica(AlgumaParser.ExpressaoAritmeticaContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#op1}.
+	 * Enter a parse tree produced by {@link AlgumaParser#operadorAritmetico1}.
 	 * @param ctx the parse tree
 	 */
-	void enterOp1(AlgumaParser.Op1Context ctx);
+	void enterOperadorAritmetico1(AlgumaParser.OperadorAritmetico1Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#op1}.
+	 * Exit a parse tree produced by {@link AlgumaParser#operadorAritmetico1}.
 	 * @param ctx the parse tree
 	 */
-	void exitOp1(AlgumaParser.Op1Context ctx);
+	void exitOperadorAritmetico1(AlgumaParser.OperadorAritmetico1Context ctx);
 	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#termo}.
+	 * Enter a parse tree produced by {@link AlgumaParser#termoAritmetico}.
 	 * @param ctx the parse tree
 	 */
-	void enterTermo(AlgumaParser.TermoContext ctx);
+	void enterTermoAritmetico(AlgumaParser.TermoAritmeticoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#termo}.
+	 * Exit a parse tree produced by {@link AlgumaParser#termoAritmetico}.
 	 * @param ctx the parse tree
 	 */
-	void exitTermo(AlgumaParser.TermoContext ctx);
+	void exitTermoAritmetico(AlgumaParser.TermoAritmeticoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#op2}.
+	 * Enter a parse tree produced by {@link AlgumaParser#operadorAritmetico2}.
 	 * @param ctx the parse tree
 	 */
-	void enterOp2(AlgumaParser.Op2Context ctx);
+	void enterOperadorAritmetico2(AlgumaParser.OperadorAritmetico2Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#op2}.
+	 * Exit a parse tree produced by {@link AlgumaParser#operadorAritmetico2}.
 	 * @param ctx the parse tree
 	 */
-	void exitOp2(AlgumaParser.Op2Context ctx);
+	void exitOperadorAritmetico2(AlgumaParser.OperadorAritmetico2Context ctx);
 	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#fator}.
+	 * Enter a parse tree produced by {@link AlgumaParser#fatorAritmetico}.
 	 * @param ctx the parse tree
 	 */
-	void enterFator(AlgumaParser.FatorContext ctx);
+	void enterFatorAritmetico(AlgumaParser.FatorAritmeticoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#fator}.
+	 * Exit a parse tree produced by {@link AlgumaParser#fatorAritmetico}.
 	 * @param ctx the parse tree
 	 */
-	void exitFator(AlgumaParser.FatorContext ctx);
+	void exitFatorAritmetico(AlgumaParser.FatorAritmeticoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#op3}.
+	 * Enter a parse tree produced by {@link AlgumaParser#parcelaAritmetica}.
 	 * @param ctx the parse tree
 	 */
-	void enterOp3(AlgumaParser.Op3Context ctx);
+	void enterParcelaAritmetica(AlgumaParser.ParcelaAritmeticaContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#op3}.
+	 * Exit a parse tree produced by {@link AlgumaParser#parcelaAritmetica}.
 	 * @param ctx the parse tree
 	 */
-	void exitOp3(AlgumaParser.Op3Context ctx);
+	void exitParcelaAritmetica(AlgumaParser.ParcelaAritmeticaContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#parcela}.
+	 * Enter a parse tree produced by {@link AlgumaParser#operadorUnario}.
 	 * @param ctx the parse tree
 	 */
-	void enterParcela(AlgumaParser.ParcelaContext ctx);
+	void enterOperadorUnario(AlgumaParser.OperadorUnarioContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#parcela}.
+	 * Exit a parse tree produced by {@link AlgumaParser#operadorUnario}.
 	 * @param ctx the parse tree
 	 */
-	void exitParcela(AlgumaParser.ParcelaContext ctx);
+	void exitOperadorUnario(AlgumaParser.OperadorUnarioContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#parcela_nao_unario}.
+	 * Enter a parse tree produced by {@link AlgumaParser#parcelaNaoUnario}.
 	 * @param ctx the parse tree
 	 */
-	void enterParcela_nao_unario(AlgumaParser.Parcela_nao_unarioContext ctx);
+	void enterParcelaNaoUnario(AlgumaParser.ParcelaNaoUnarioContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#parcela_nao_unario}.
+	 * Exit a parse tree produced by {@link AlgumaParser#parcelaNaoUnario}.
 	 * @param ctx the parse tree
 	 */
-	void exitParcela_nao_unario(AlgumaParser.Parcela_nao_unarioContext ctx);
+	void exitParcelaNaoUnario(AlgumaParser.ParcelaNaoUnarioContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#op_unario}.
+	 * Enter a parse tree produced by {@link AlgumaParser#parcelaUnario}.
 	 * @param ctx the parse tree
 	 */
-	void enterOp_unario(AlgumaParser.Op_unarioContext ctx);
+	void enterParcelaUnario(AlgumaParser.ParcelaUnarioContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#op_unario}.
+	 * Exit a parse tree produced by {@link AlgumaParser#parcelaUnario}.
 	 * @param ctx the parse tree
 	 */
-	void exitOp_unario(AlgumaParser.Op_unarioContext ctx);
+	void exitParcelaUnario(AlgumaParser.ParcelaUnarioContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#parcela_unario}.
+	 * Enter a parse tree produced by {@link AlgumaParser#expressaoLogica}.
 	 * @param ctx the parse tree
 	 */
-	void enterParcela_unario(AlgumaParser.Parcela_unarioContext ctx);
+	void enterExpressaoLogica(AlgumaParser.ExpressaoLogicaContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#parcela_unario}.
+	 * Exit a parse tree produced by {@link AlgumaParser#expressaoLogica}.
 	 * @param ctx the parse tree
 	 */
-	void exitParcela_unario(AlgumaParser.Parcela_unarioContext ctx);
+	void exitExpressaoLogica(AlgumaParser.ExpressaoLogicaContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#expressao}.
+	 * Enter a parse tree produced by {@link AlgumaParser#termoLogico}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpressao(AlgumaParser.ExpressaoContext ctx);
+	void enterTermoLogico(AlgumaParser.TermoLogicoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#expressao}.
+	 * Exit a parse tree produced by {@link AlgumaParser#termoLogico}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpressao(AlgumaParser.ExpressaoContext ctx);
+	void exitTermoLogico(AlgumaParser.TermoLogicoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#op1_logico}.
+	 * Enter a parse tree produced by {@link AlgumaParser#fatorLogico}.
 	 * @param ctx the parse tree
 	 */
-	void enterOp1_logico(AlgumaParser.Op1_logicoContext ctx);
+	void enterFatorLogico(AlgumaParser.FatorLogicoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#op1_logico}.
+	 * Exit a parse tree produced by {@link AlgumaParser#fatorLogico}.
 	 * @param ctx the parse tree
 	 */
-	void exitOp1_logico(AlgumaParser.Op1_logicoContext ctx);
+	void exitFatorLogico(AlgumaParser.FatorLogicoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#termo_logico}.
+	 * Enter a parse tree produced by {@link AlgumaParser#expressaoRelacional}.
 	 * @param ctx the parse tree
 	 */
-	void enterTermo_logico(AlgumaParser.Termo_logicoContext ctx);
+	void enterExpressaoRelacional(AlgumaParser.ExpressaoRelacionalContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#termo_logico}.
+	 * Exit a parse tree produced by {@link AlgumaParser#expressaoRelacional}.
 	 * @param ctx the parse tree
 	 */
-	void exitTermo_logico(AlgumaParser.Termo_logicoContext ctx);
+	void exitExpressaoRelacional(AlgumaParser.ExpressaoRelacionalContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#op2_logico}.
+	 * Enter a parse tree produced by {@link AlgumaParser#operadorRelacional}.
 	 * @param ctx the parse tree
 	 */
-	void enterOp2_logico(AlgumaParser.Op2_logicoContext ctx);
+	void enterOperadorRelacional(AlgumaParser.OperadorRelacionalContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#op2_logico}.
+	 * Exit a parse tree produced by {@link AlgumaParser#operadorRelacional}.
 	 * @param ctx the parse tree
 	 */
-	void exitOp2_logico(AlgumaParser.Op2_logicoContext ctx);
+	void exitOperadorRelacional(AlgumaParser.OperadorRelacionalContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#fator_logico}.
+	 * Enter a parse tree produced by {@link AlgumaParser#identificadorEndereco}.
 	 * @param ctx the parse tree
 	 */
-	void enterFator_logico(AlgumaParser.Fator_logicoContext ctx);
+	void enterIdentificadorEndereco(AlgumaParser.IdentificadorEnderecoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#fator_logico}.
+	 * Exit a parse tree produced by {@link AlgumaParser#identificadorEndereco}.
 	 * @param ctx the parse tree
 	 */
-	void exitFator_logico(AlgumaParser.Fator_logicoContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#parcela_logica}.
-	 * @param ctx the parse tree
-	 */
-	void enterParcela_logica(AlgumaParser.Parcela_logicaContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#parcela_logica}.
-	 * @param ctx the parse tree
-	 */
-	void exitParcela_logica(AlgumaParser.Parcela_logicaContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#expressao_relacional}.
-	 * @param ctx the parse tree
-	 */
-	void enterExpressao_relacional(AlgumaParser.Expressao_relacionalContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#expressao_relacional}.
-	 * @param ctx the parse tree
-	 */
-	void exitExpressao_relacional(AlgumaParser.Expressao_relacionalContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link AlgumaParser#op_relacional}.
-	 * @param ctx the parse tree
-	 */
-	void enterOp_relacional(AlgumaParser.Op_relacionalContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link AlgumaParser#op_relacional}.
-	 * @param ctx the parse tree
-	 */
-	void exitOp_relacional(AlgumaParser.Op_relacionalContext ctx);
+	void exitIdentificadorEndereco(AlgumaParser.IdentificadorEnderecoContext ctx);
 }
